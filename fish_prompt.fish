@@ -56,11 +56,12 @@ function fish_prompt
   set -l git_arrows ""
   set -l command_duration ""
   set -l prompt ""
+  
+  set prompt $prompt "\n"
+  
+  set prompt $prompt $pure_color_gray (date "+$c2%H$c0:$c2%M$c0:$c2%S")
 
-  # Do not add a line break to a brand new session
-  if test $__pure_fresh_session -eq 0
-    set prompt $prompt "\n"
-  end
+  set prompt $prompt "\n"
 
   # Check if user is in an SSH session
   if [ "$SSH_CONNECTION" != "" ]
